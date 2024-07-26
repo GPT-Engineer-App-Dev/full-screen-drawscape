@@ -106,6 +106,9 @@ const Index = () => {
         <Button onClick={clearCanvas} className="w-full">Clear Canvas</Button>
         </div>
       </div>
+      <footer className="bg-secondary text-secondary-foreground p-4 text-center">
+        <p>&copy; 2024 DrawingApp. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
