@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <main className="min-h-screen">
+    <main className="w-screen h-screen overflow-hidden">
       <Outlet />
     </main>
   );
