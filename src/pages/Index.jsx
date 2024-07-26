@@ -56,14 +56,41 @@ const Index = () => {
   };
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full"
-      onMouseDown={startDrawing}
-      onMouseUp={stopDrawing}
-      onMouseMove={draw}
-      onMouseOut={stopDrawing}
-    />
+    <div className="relative w-full h-[calc(100vh-4rem)]">
+      <canvas
+        ref={canvasRef}
+        className="absolute top-0 left-0 w-full h-full"
+        onMouseDown={startDrawing}
+        onMouseUp={stopDrawing}
+        onMouseMove={draw}
+        onMouseOut={stopDrawing}
+      />
+      <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-md">
+        <div className="mb-4">
+          <Label htmlFor="color-picker">Pen Color</Label>
+          <Input
+            id="color-picker"
+            type="color"
+            value={penColor}
+            onChange={(e) => setPenColor(e.target.value)}
+            className="w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <Label htmlFor="size-picker">Pen Size</Label>
+          <Input
+            id="size-picker"
+            type="range"
+            min="1"
+            max="20"
+            value={penSize}
+            onChange={(e) => setPenSize(parseInt(e.target.value))}
+            className="w-full"
+          />
+        </div>
+        <Button onClick={clearCanvas} className="w-full">Clear Canvas</Button>
+      </div>
+    </div>
   );
 };
 
