@@ -67,16 +67,20 @@ const Index = () => {
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-4rem)]">
-      <canvas
-        ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full"
-        onMouseDown={startDrawing}
-        onMouseUp={stopDrawing}
-        onMouseMove={draw}
-        onMouseOut={stopDrawing}
-      />
-      <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-md">
+    <div className="flex flex-col h-[calc(100vh-4rem)]">
+      <header className="bg-primary text-primary-foreground p-4">
+        <h1 className="text-2xl font-bold">Drawing Canvas</h1>
+      </header>
+      <div className="relative flex-grow">
+        <canvas
+          ref={canvasRef}
+          className="absolute top-0 left-0 w-full h-full"
+          onMouseDown={startDrawing}
+          onMouseUp={stopDrawing}
+          onMouseMove={draw}
+          onMouseOut={stopDrawing}
+        />
+        <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-md">
         <div className="mb-4">
           <Label htmlFor="color-picker">Pen Color</Label>
           <Input
@@ -100,6 +104,7 @@ const Index = () => {
           />
         </div>
         <Button onClick={clearCanvas} className="w-full">Clear Canvas</Button>
+        </div>
       </div>
     </div>
   );
