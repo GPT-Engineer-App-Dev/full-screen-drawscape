@@ -1,11 +1,16 @@
 // Update this page (the content is just a fallback if you fail to update the page)
 
 import { useState, useRef, useEffect } from 'react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Index = () => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
+  const [penColor, setPenColor] = useState('#000000');
+  const [penSize, setPenSize] = useState(5);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -53,6 +58,12 @@ const Index = () => {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top
     };
+  };
+
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
   return (
